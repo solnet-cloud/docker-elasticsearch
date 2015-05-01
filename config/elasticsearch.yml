@@ -20,8 +20,9 @@ gateway:
     expected_nodes: 2
     
 path:
-   logs: /es-data/logs
+   plugins: /es-data/plugins
    data: /es-data/data
+   work: /es-data/work
 
 discovery:
     zen:
