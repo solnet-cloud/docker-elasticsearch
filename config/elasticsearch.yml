@@ -1,0 +1,30 @@
+### LOGSTASH ELASTICSEARCH CONFIGURATION
+
+cluster.name: es-logstash 
+
+index:
+    number_of_shards: 4
+    number_of_replicas: 1
+
+transport.tcp.port: 9300
+http:
+    port: 9200
+    max_content_length: 250mb
+    cors:
+        allow-origin: "/.*/"
+        enabled: true
+    
+# We want there to be n-1 nodes where n is the amount of actual nodes. This means the cluster can run in a degraded
+# state without entering recovery mode.
+gateway:
+    expected_nodes: 2
+    
+path:
+   logs: /es-data/logs
+   data: /es-data/data
+
+discovery:
+    zen:
+        minimum_master_nodes: 1
+        ping:
+            timeout: 3s
