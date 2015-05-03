@@ -22,6 +22,8 @@ LABEL Description="This image is used to stand up an elasticsearch instance. Run
 and --cluster.name=<cluster-name> to configure." Version="1.0.2"
 
 # Patch nodes:
+# Version 1.0.3
+#       - Fixed work directory to /es-data/
 # Version 1.0.2
 #       - Created build instructions to specify required build paramaters
 #       - Created run instructions to specify required run paramaters
@@ -68,7 +70,7 @@ ADD config/elasticsearch.yml /elasticsearch/config/elasticsearch.yml
 ADD config/logging.yml       /elasticsearch/config/logging.yml
 
 # Define a working directory
-WORKDIR /data
+WORKDIR /es-data
 
 # Define default command as entrypoint
 ENTRYPOINT ["/elasticsearch/bin/elasticsearch"]
