@@ -12,7 +12,7 @@ FROM dockerfile/java:oracle-java8
 #                                            4224 MiB (4GB + 128MB overhead)
 
 # Run Instructions:
-# Run a DOC to preserve state of /es-data/data/.
+# Run a DOC/volume to preserve state of /es-data/data/.
 # When running use the following flags:
 #      --restart=on-failure
 
