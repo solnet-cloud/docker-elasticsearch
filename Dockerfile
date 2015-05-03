@@ -1,6 +1,6 @@
 # Elasticsearch Dockerfile
 # Solnet Solutions
-# Version: 1.0.2
+# Version: 1.0.3
 # Elasticsearch Version: 1.5.2
 
 # Pull base image (Java8)
@@ -8,7 +8,7 @@ FROM dockerfile/java:oracle-java8
 
 # Build Instructions:
 # When building use the following flags:
-#      --tag="elasticsearch:1.0.2" --memory="4429185024" --memory-swap="-1"
+#      --tag="elasticsearch:1.0.3" --memory="4429185024" --memory-swap="-1"
 #                                            4224 MiB (4GB + 128MB overhead)
 
 # Run Instructions:
@@ -19,7 +19,7 @@ FROM dockerfile/java:oracle-java8
 # Information
 MAINTAINER Taylor Bertie <taylor.bertie@solnet.co.nz>
 LABEL Description="This image is used to stand up an elasticsearch instance. Run with the params --node.name=<name> \
-and --cluster.name=<cluster-name> to configure." Version="1.0.2"
+and --cluster.name=<cluster-name> to configure." Version="1.0.3"
 
 # Patch nodes:
 # Version 1.0.3
