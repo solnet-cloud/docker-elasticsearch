@@ -20,7 +20,7 @@ MAINTAINER Taylor Bertie <taylor.bertie@solnet.co.nz>
 LABEL Description="This image is used to stand up an elasticsearch instance. Run with the params --node.name=<name> \
 and --cluster.name=<cluster-name> to configure." Version="1.5.2"
 
-# Patch nodes:
+# Patch notes:
 # Version 1.5.2
 #       - Synced verison numbers with software for ease of reference
 #       - Moved to java:8-jre as the dockerfile/java:oracle-java8 has been pulled from the repo and is not licensed
