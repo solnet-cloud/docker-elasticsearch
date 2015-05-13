@@ -13,7 +13,14 @@ FROM java:8-jre
 # Run Instructions:
 # Run a DOC/volume to preserve state of /es-data/data/.
 # When running use the following flags:
-#      --restart=on-failure
+#      --restart=on-failure  --log-driver=syslog
+
+# NOTICE: As this build is designed to run using multicast it is recommend you utilise Weave, or bridge your docker0 on
+# a common subnet in order to facilate the multicast. If you require unicast please override the configuration file.
+
+# It is important to note that this elasticsearch build does not support SSL or HTTP Basic Auth. If you wish
+# to enable this functionary you will need to do this using an haproxy container. If you do this make sure your
+# Elasticsearch ports are not exposed outside the docker0 bridge (or whatever network you are running them on)
 
 # Information
 MAINTAINER Taylor Bertie <taylor.bertie@solnet.co.nz>
