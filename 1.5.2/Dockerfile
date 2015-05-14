@@ -7,13 +7,13 @@ FROM java:8-jre
 
 # Build Instructions:
 # When building use the following flags:
-#      --tag="elasticsearch:1.5.2" --memory="4429185024" --memory-swap="-1"
-#                                            4224 MiB (4GB + 128MB overhead)
+#      --tag="elasticsearch:1.5.2" -
 
 # Run Instructions:
 # Run a DOC/volume to preserve state of /es-data/data/.
 # When running use the following flags:
-#      --restart=on-failure  --log-driver=syslog
+#      --restart=on-failure  --log-driver=syslog --memory="4429185024" --memory-swap="-1"
+#                                                      4224 MiB (4GB + 128MB overhead)
 
 # NOTICE: As this build is designed to run using multicast it is recommend you utilise Weave, or bridge your docker0 on
 # a common subnet in order to facilate the multicast. If you require unicast please override the configuration file.
