@@ -7,7 +7,7 @@ Under the most basic usage you will make sure this container is operating in the
 
     docker run -d --restart=on-failure --memory="4429185024" --memory-swap="-1" solnetcloud/elasticsearch:latest
 
-This container entries directly into the Elasticsearch executable, which means that you can use --node.name=<name> and --cluster.name=<cluster_name> to override the default configuration.
+This container entries directly into the Elasticsearch executable, which means that you can use --node.name={name} and --cluster.name={cluster_name} to override the default configuration.
 
 You can utilise a --log-driver=syslog, however this is optional, and as you will likely be using this with logstash consuming the syslog entries for the host, it is probably wise to leave this logging to files.
 
