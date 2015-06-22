@@ -1,6 +1,6 @@
 # Elasticsearch Dockerfile
 # Solnet Solutions
-# Version: 1.5.2
+# Version: 1.6.06.06.06.06.0
 
 # Pull base image (Java8)
 FROM java:8-jre
