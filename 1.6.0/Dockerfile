@@ -12,8 +12,8 @@ FROM java:8-jre
 # Run Instructions:
 # Run a DOC/volume to preserve state of /es-data/data/.
 # When running use the following flags:
-#      --restart=on-failure  --log-driver=syslog --memory="4429185024" --memory-swap="-1"
-#                                                      4224 MiB (4GB + 128MB overhead)
+#      --restart=on-failure  --log-driver=syslog --memory="10737418240" --memory-swap="-1"
+#                                                      10240 MiB (8GiB heap + 2GiB overhead)
 
 # NOTICE: As this build is designed to run using multicast it is recommend you utilise Weave, or bridge your docker0 on
 # a common subnet in order to facilate the multicast. If you require unicast please override the configuration file.
@@ -28,8 +28,10 @@ LABEL Description="This image is used to stand up an elasticsearch instance. Run
 and --cluster.name=<cluster-name> to configure." Version="1.6.0"
 
 # Patch notes:
+# Version 1.6.0-r1
+#       - Moved to 8GiB heap with 2GiB overhead defaults
 # Version 1.6.0
-#	- Created a new version for 1.6.0 version of Elasticsearch
+#       - Created a new version for 1.6.0 version of Elasticsearch
 # Version 1.5.2
 #       - Synced verison numbers with software for ease of reference
 #       - Moved to java:8-jre as the dockerfile/java:oracle-java8 has been pulled from the repo and is not licensed
@@ -47,7 +49,7 @@ and --cluster.name=<cluster-name> to configure." Version="1.6.0"
 
 # Set the Elasticsearch Version and other enviroment variables
 ENV ES_PKG_NAME elasticsearch-1.6.0
-ENV ES_HEAP_SIZE 4g
+ENV ES_HEAP_SIZE 8g
 ENV MAX_MAP_COUNT 262144
 
 # Prepare the various directories in /es-data/

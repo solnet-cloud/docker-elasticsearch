@@ -5,10 +5,10 @@ More details on the Elasticsearch product can be found at the elastic website at
 
 Under the most basic usage you will make sure this container is operating in the same network (i.e. same machine) as the cluster it will be connected to. You can utilise <a href="https://github.com/weaveworks/weave">Weave</a> and other technologies to distribute multiple nodes over multiple hosts. It is recommend you use restart on-failure, prevent swapping, and limit RAM usage of the container to just over 4GiB.
 
-    docker run -d --restart=on-failure --memory="4429185024" --memory-swap="-1" solnetcloud/elasticsearch:latest
+    docker run -d --restart=on-failure --memory="10737418240" --memory-swap="-1" solnetcloud/elasticsearch:latest
 
 This container's entrypoint is directly into the Elasticsearch executable, which means that you can use --node.name={name} and --cluster.name={cluster_name} to override the default configuration.
 
 You can utilise a --log-driver=syslog, however this is optional, and as you will likely be using this with logstash consuming the syslog entries for the host. It is probably wise to leave this logging to files.
 
-This container by default expects there to be at least two nodes in the same cluster, and is tuned for relatively low event input. If this is not your use case you are welcome to fork this build and modify it to suit your needs.
+This container by default expects there to be at least two nodes in the same cluster, and is tuned for low to medium event input. If this is not your use case you are welcome to fork this build and modify it to suit your needs.
