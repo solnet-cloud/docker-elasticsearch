@@ -3,7 +3,7 @@ Elasticsearch is a distributed, open source search and analytics engine, designe
 
 More details on the Elasticsearch product can be found at the elastic website at https://www.elastic.co/products/elasticsearch
 
-Under the most basic usage you will make sure this container is operating in the same network (i.e. same machine) as the cluster it will be connected to. You can utilise <a href="https://github.com/weaveworks/weave">Weave</a> and other technologies to distribute multiple nodes over multiple hosts. It is recommend you use restart on-failure, prevent swapping, and limit RAM usage of the container to just over 4GiB.
+Under the most basic usage you will make sure this container is operating in the same network (i.e. same machine) as the cluster it will be connected to. You can utilise <a href="https://github.com/weaveworks/weave">Weave</a> and other technologies to distribute multiple nodes over multiple hosts. It is recommend you use restart on-failure, prevent swapping, and limit RAM usage of the container to just over 10GiB.
 
     docker run -d --restart=on-failure --memory="10737418240" --memory-swap="-1" solnetcloud/elasticsearch:latest
 
