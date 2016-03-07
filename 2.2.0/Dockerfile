@@ -55,7 +55,7 @@ ENV ES_HEAP_SIZE 8g
 ENV MAX_MAP_COUNT 262144
 
 # Needed to fix issues with mutlicast plugin:
-ES_USE_IPV4 true
+ENV ES_USE_IPV4 true
 
 # Prepare the various directories in /es-data/
 RUN \
