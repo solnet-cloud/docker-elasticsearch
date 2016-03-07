@@ -60,13 +60,19 @@ RUN \
     mkdir -p /es-data/plugins && \
     mkdir -p /es-data/work
 
+# Add the elasticsearch user
+RUN \
+    useradd -s /usr/sbin/nologin -r -M -d /es-data elasticsearch && \ 
+    chown -R elasticsearch:elasticsearch /es-data/
+
 # Install Elasticsearch and delete the elasticsearch tarball
 RUN \
   cd / && \
   wget https://download.elastic.co/elasticsearch/elasticsearch/$ES_PKG_NAME.tar.gz && \
   tar xvzf $ES_PKG_NAME.tar.gz && \
   rm -f $ES_PKG_NAME.tar.gz && \
-  mv /$ES_PKG_NAME /elasticsearch
+  mv /$ES_PKG_NAME /elasticsearch && \
+  chown -R elasticsearch:elasticsearch /elasticsearch
   
 # This part is down atomically in order to ensure that superflious files like the tarball are removed from the
 # resulting file system layer, thus reducing the overall size of the image.
@@ -75,6 +81,7 @@ RUN \
 RUN \
   cd /elasticsearch && \
   bin/plugin install mobz/elasticsearch-head && \
+  chown -R elasticsearch:elasticsearch /elasticsearch/plugins/head && \
   mv /elasticsearch/plugins/head /es-data/plugins/
   
 # Define mountable volumes. We need to be able to keep the data consistent so this should be mounted as a volume
@@ -88,6 +95,7 @@ ADD config/logging.yml       /elasticsearch/config/logging.yml
 WORKDIR /es-data
 
 # Define default command as entrypoint
+USER elasticsearch
 ENTRYPOINT ["/elasticsearch/bin/elasticsearch"]
 
 # Expose ports
