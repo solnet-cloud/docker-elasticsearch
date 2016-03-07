@@ -54,6 +54,9 @@ ENV ES_PKG_NAME elasticsearch-2.2.0
 ENV ES_HEAP_SIZE 8g
 ENV MAX_MAP_COUNT 262144
 
+# Needed to fix issues with mutlicast plugin:
+ES_USE_IPV4 true
+
 # Prepare the various directories in /es-data/
 RUN \
     mkdir -p /es-data/data && \
