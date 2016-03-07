@@ -28,5 +28,5 @@ path:
 
 discovery:
     zen:
-	ping.multicast.enabled: true
+        ping.multicast.enabled: true
         minimum_master_nodes: 1
