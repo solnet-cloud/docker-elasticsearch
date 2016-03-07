@@ -13,6 +13,9 @@ http:
     cors:
         allow-origin: "/.*/"
         enabled: true
+
+# Must include this binding or ES will only band to localhost, preventing access
+network.host: 0.0.0.0
     
 # We want there to be n-1 nodes where n is the amount of actual nodes. This means the cluster can run in a degraded
 # state without entering recovery mode.
