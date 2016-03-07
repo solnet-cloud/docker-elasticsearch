@@ -23,12 +23,10 @@ gateway:
     expected_nodes: 2
     
 path:
-   plugins: /es-data/plugins
    data: /es-data/data
    work: /es-data/work
 
 discovery:
     zen:
+	ping.multicast.enabled: true
         minimum_master_nodes: 1
-        ping:
-            timeout: 120s

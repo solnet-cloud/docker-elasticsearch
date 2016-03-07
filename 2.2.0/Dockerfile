@@ -57,7 +57,6 @@ ENV MAX_MAP_COUNT 262144
 # Prepare the various directories in /es-data/
 RUN \
     mkdir -p /es-data/data && \
-    mkdir -p /es-data/plugins && \
     mkdir -p /es-data/work
 
 # Add the elasticsearch user
@@ -77,12 +76,18 @@ RUN \
 # This part is down atomically in order to ensure that superflious files like the tarball are removed from the
 # resulting file system layer, thus reducing the overall size of the image.
   
-# Install Elasticsearch head plugin and move it to the correct plugin directory
+# Install Multicast Discovery plugin
+# This feature will be removed in 3.0.0 so we need to work out another way to handle this multi-node problem
+RUN \
+  cd /elasticsearch && \
+  bin/plugin install discovery-multicast && \
+  chown -R elasticsearch:elasticsearch /elasticsearch/plugins/*
+
+# Install Elasticsearch head plugin
 RUN \
   cd /elasticsearch && \
   bin/plugin install mobz/elasticsearch-head && \
-  chown -R elasticsearch:elasticsearch /elasticsearch/plugins/head && \
-  mv /elasticsearch/plugins/head /es-data/plugins/
+  chown -R elasticsearch:elasticsearch /elasticsearch/plugins/head
   
 # Define mountable volumes. We need to be able to keep the data consistent so this should be mounted as a volume
 VOLUME /es-data/data/
